@@ -29,16 +29,21 @@ The name of the project has three main points:
  ## Tech stacks for each steps:
  
  - Game play
+ 
  1. Unity for game development, character control, multi-player synchronization;
  2. Blender for simple modeling works;
  
  - Browser platform
- To let our game running in the Browser, we will need a Frontend project. Thus, we will be using React to build a web application which built by Unity's WebGL support and runs our game in the Browser.
+ 
+ 1. To let our game running in the Browser, we will need a Frontend project. Thus, we will be using React to build a web application;
+ 2. The game will be built in WebGL which is supported by Unity. WebGL allows our game to be run in the Browser.
  
  - Backend Server
+ 
  1. For the main game, choose Photon as our Game Server. If we have more time/members later, will consider write our own game server;
  2. Will publish React Project on GitHub so that people could enter the Meta Space through public URL;
  
  - Others
- 1. Will use Unity's Agora Video SDK for Voice chat system.
+
+ 1. Unity's Agora Video SDK for Voice chat system.
   
