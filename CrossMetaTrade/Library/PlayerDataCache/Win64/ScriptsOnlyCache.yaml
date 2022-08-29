@@ -1,10 +1,12 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
+    - GameManagerSystem
     - PlayerControl
     - Turn_Move
     Cinemachine.dll:
     - Cinemachine.CinemachineBrain
+    - Cinemachine.CinemachineCollider
     - Cinemachine.CinemachineComposer
     - Cinemachine.CinemachineFreeLook
     - Cinemachine.CinemachineInputProvider
@@ -22,8 +24,10 @@ ScriptsOnlyBuild:
     UnityEditor.Graphs.dll:
     - UnityEditor.Graphs.AnimationBlendTree.Graph
     - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
     - UnityEditor.Graphs.AnimationStateMachine.Graph
     - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
+    - UnityEditor.Graphs.AnimationStateMachine.StateNode
     - UnityEditor.Graphs.AnimatorControllerTool
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -59,6 +63,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 82
       Script: {instanceID: 0}
+    - Class: 83
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 90
@@ -73,6 +79,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 114
       Script: {instanceID: 1690}
+    - Class: 114
+      Script: {instanceID: 2008}
     - Class: 114
       Script: {instanceID: 2576}
     - Class: 114
@@ -93,6 +101,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 7008}
     - Class: 114
       Script: {instanceID: 7530}
+    - Class: 114
+      Script: {instanceID: 107246}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 137
@@ -694,7 +704,7 @@ ScriptsOnlyBuild:
     className: OnScreenStick
   - hash:
       serializedVersion: 2
-      Hash: 6828a558baabf081aca5e12ea19750be
+      Hash: fcd3e9c8ea429038fa2bdcc9f295de11
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: PlayerControl
@@ -1346,7 +1356,13 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core.dll
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
+  - hash:
+      serializedVersion: 2
+      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: GameManagerSystem
   platform: 19
   scenePathNames:
   - Assets/Scenes/SampleScene.unity
-  playerPath: "C:/Users/\u8521\u6587\u78CA/Desktop/Projects/CrossMetaTrade/CrossMetaTrade.exe"
+  playerPath: C:/Users/Wenlei Dev/Desktop/Builds/CrossMetaTrade.exe
