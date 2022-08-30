@@ -21,7 +21,7 @@ MonoBehaviour:
   m_ShowMode: 4
   m_Title: Game
   m_RootView: {fileID: 3}
-  m_MinSize: {x: 875, y: 300}
+  m_MinSize: {x: 875, y: 542}
   m_MaxSize: {x: 10000, y: 10000}
   m_Maximized: 1
 --- !u!114 &2
@@ -145,7 +145,7 @@ MonoBehaviour:
   m_MinSize: {x: 709, y: 492}
   m_MaxSize: {x: 18004, y: 14042}
   vertical: 0
-  controlID: 61
+  controlID: 149
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -192,8 +192,8 @@ MonoBehaviour:
     y: 0
     width: 1956
     height: 919
-  m_MinSize: {x: 403, y: 221}
-  m_MaxSize: {x: 8003, y: 4021}
+  m_MinSize: {x: 401, y: 221}
+  m_MaxSize: {x: 8001, y: 4021}
   vertical: 0
   controlID: 63
 --- !u!114 &9
@@ -242,8 +242,8 @@ MonoBehaviour:
     y: 0
     width: 1209
     height: 919
-  m_MinSize: {x: 202, y: 221}
-  m_MaxSize: {x: 4002, y: 4021}
+  m_MinSize: {x: 200, y: 200}
+  m_MaxSize: {x: 4000, y: 4000}
   m_ActualView: {fileID: 15}
   m_Panes:
   - {fileID: 15}
@@ -480,9 +480,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.09551231, y: 1.1297197, z: -0.54442257}
+    m_Target: {x: 538.338, y: 383.37433, z: -56.561203}
     speed: 2
-    m_Value: {x: 0.09551231, y: 1.1297197, z: -0.54442257}
+    m_Value: {x: 538.338, y: 383.37433, z: -56.561203}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -533,9 +533,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 4.0680194
+    m_Target: 639.7284
     speed: 2
-    m_Value: 4.0680194
+    m_Value: 639.7284
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -640,9 +640,9 @@ MonoBehaviour:
       e32: 0
       e33: 1
   m_PreviewAnimator: {fileID: 0}
-  m_AnimatorController: {fileID: 9100000, guid: d6e74242c2be85c4cb2abb9852ab7ee6, type: 2}
+  m_AnimatorController: {fileID: 9100000, guid: c42f92f64ed78ec41ad51263f609dd17, type: 2}
   m_BreadCrumbs:
-  - m_Target: {fileID: -8974424094808401853, guid: d6e74242c2be85c4cb2abb9852ab7ee6, type: 2}
+  - m_Target: {fileID: -8284643796073478361, guid: c42f92f64ed78ec41ad51263f609dd17, type: 2}
     m_ScrollPosition: {x: 0, y: 0}
   stateMachineGraph: {fileID: 0}
   stateMachineGraphGUI: {fileID: 0}
@@ -693,22 +693,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets
+    - Assets/Scenes
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets
+  - Assets/Scenes
   m_LastFoldersGridSize: -1
   m_LastProjectPath: C:\Users\Wenlei Dev\Documents\GitHub\CrossMetaTrade\CrossMetaTrade
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 84530000
-    m_LastClickedID: 21380
-    m_ExpandedIDs: 000000008453000086530000885300008a53000000ca9a3b
+    scrollPos: {x: 0, y: 417}
+    m_SelectedIDs: aa530000
+    m_LastClickedID: 21418
+    m_ExpandedIDs: 000000008453000086530000885300008a530000a4530000565500005e550000d855000028560000ba57000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -724,7 +724,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 12}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -763,8 +763,8 @@ MonoBehaviour:
   m_ListAreaState:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
-    m_HadKeyboardFocusLastEvent: 0
-    m_ExpandedInstanceIDs: c62300004c630000527c0000
+    m_HadKeyboardFocusLastEvent: 1
+    m_ExpandedInstanceIDs: c62300004c630000527c00000000000038560000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_LockTracker:
     m_IsLocked: 0
-  m_LastSelectedObjectID: -36056
+  m_LastSelectedObjectID: 108580
 --- !u!114 &21
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -875,7 +875,7 @@ MonoBehaviour:
       scrollPos: {x: 0, y: 0}
       m_SelectedIDs: 
       m_LastClickedID: 0
-      m_ExpandedIDs: 64fbffff
+      m_ExpandedIDs: d8b4feffe0b6feff76b7feff9cb7feff66bafeff82bafeffd4bbfeffa2d0fefff6e3feff1ae4feffaee4feffd4e4feff92e7feff9ce7feffdce8feffe4f6feff9e0dffff482dffff522fffffea2fffff1030ffffcc32ffffd632ffff1634ffff1635ffff3c35fffff837ffff0238ffff4239ffff543effff7a3effff3841ffff4241ffff8242ffff3244ffff5844ffff1647ffff2047ffff6048fffff049ffff164affff1e4affff224affff524bffffc04cffffe64cffffee4cfffff24cffff224effffae4fffffd44fffff9252ffff9c52ffffdc53ffff3c72ffffa282ffff5683ffff7c83fffffc93ffff0494ffff3c95ffff7ad2ffff20dbffff50dbffff92e0ffff66eeffff50efffffc6f2ffff5ef3ffff98f3ffffa8f4ffff64fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

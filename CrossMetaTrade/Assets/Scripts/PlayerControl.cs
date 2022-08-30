@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -16,12 +17,17 @@ public class PlayerControl : MonoBehaviour
     PlayerControlAction playerControlAction;
     AudioSource footStepSound;
 
+    PhotonView view;
+
     private void Awake()
     {
         playerControlAction = new PlayerControlAction();
         // bind WASD movement
         playerControlAction.Player.Move.performed += moveValue => moveInput = moveValue.ReadValue<Vector2>();
         playerControlAction.Player.Move.canceled += moveValue => moveInput = moveValue.ReadValue<Vector2>();
+
+        cam = Camera.main.transform;
+        view = GetComponent<PhotonView>();
     }
 
     #region - Enable / Disable -
@@ -48,26 +54,30 @@ public class PlayerControl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (moveInput.magnitude != 0)
+        if (view.IsMine)
         {
-            playerAnimator.SetBool("isWalking", true);
-            if (!footStepSound.isPlaying)
+            if (moveInput.magnitude != 0)
             {
-                footStepSound.Play();
+                playerAnimator.SetBool("isWalking", true);
+                if (!footStepSound.isPlaying)
+                {
+                    footStepSound.Play();
+                }
+                Vector3 direction = new Vector3(moveInput.x, 0, moveInput.y).normalized;
+
+                float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
+                float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
+                transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
             }
-            Vector3 direction = new Vector3(moveInput.x, 0, moveInput.y).normalized;
-
-            float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + cam.eulerAngles.y;
-            float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, angle, 0f);
-
-            Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-            characterController.Move(moveDirection * moveSpeed * Time.deltaTime);
+            else
+            {
+                playerAnimator.SetBool("isWalking", false);
+                footStepSound.Stop();
+            }
         }
-        else
-        {
-            playerAnimator.SetBool("isWalking", false);
-            footStepSound.Stop();
-        }
+
     }
 }
