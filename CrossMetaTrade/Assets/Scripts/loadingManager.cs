@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class loadingManager : MonoBehaviourPunCallbacks
 {
     public Slider slider;
-    public int processSpeed = 1;
+    public int processSpeed;
     private int currentProcess;
     private int maxProcess = 100;
     private float timer = 0f;
