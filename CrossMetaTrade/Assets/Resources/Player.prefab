@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 3178515327648192195}
   - component: {fileID: 5675466326287888721}
   - component: {fileID: 3827032803369797701}
-  - component: {fileID: 4067476729305329703}
   - component: {fileID: 6739322053760074711}
   m_Layer: 0
   m_Name: Player
@@ -189,7 +188,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3827032803369797701}
-  - {fileID: 4067476729305329703}
+  - {fileID: 0}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -226,30 +225,6 @@ MonoBehaviour:
     InterpolateOption: 0
     InterpolateMoveTowardsSpeed: 1
     InterpolateLerpSpeed: 0
---- !u!114 &4067476729305329703
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3178515327648192199}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ShowLayerWeightsInspector: 1
-  ShowParameterInspector: 1
-  m_SynchronizeParameters:
-  - Type: 4
-    SynchronizeType: 0
-    Name: isWalking
-  - Type: 4
-    SynchronizeType: 0
-    Name: isRunning
-  m_SynchronizeLayers:
-  - SynchronizeType: 0
-    LayerIndex: 0
 --- !u!95 &6739322053760074711
 Animator:
   serializedVersion: 3
@@ -263,7 +238,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: cc9725d205fef044eb53fe0728cdf067, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
