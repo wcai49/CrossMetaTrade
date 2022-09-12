@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
     {
         // assign gameobjects
         characterController = GetComponent<CharacterController>();
-        playerAnimator = GetComponentInChildren<Animator>();
+        playerAnimator = GetComponent<Animator>();
         footStepSound = GetComponent<AudioSource>();
     }
 
