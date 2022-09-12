@@ -20,6 +20,6 @@ public class LobbyManager : MonoBehaviourPunCallbacks
 
     public override void OnJoinedRoom()
     {
-        PhotonNetwork.LoadLevel("SpaceShip");
+        PhotonNetwork.LoadLevel("MetaWorld");
     }
 }
