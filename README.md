@@ -1,10 +1,10 @@
 # CrossMetaTrade
 
-## This is the Personal project for Microsoft Hackathon 2022.
+## This is the Team project for Microsoft Hackathon 2022.
 
 ![](https://github.com/wcai49/CrossMetaTrade/blob/main/src/CrossMetaTrade_Cover.png)
 
-So far there is only one member in the team. Might update this later if we have more people who are interested in this project. Apply without any hesitation if you are:
+So far there are 4 members and one advisor in the team. Might update this later if we have more people who are interested in this project. Apply without any hesitation if you are:
 
 1. Interested in any of the relevant topic: Metaverse, NFTs, Unity Game Development, Blender/3DMax modeling;
 2. Locates in Suzhou, Greater China Region;
