@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 5675466326287888721}
   - component: {fileID: 3827032803369797701}
   - component: {fileID: 6739322053760074711}
+  - component: {fileID: 278764156259030502}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -188,7 +189,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 3827032803369797701}
-  - {fileID: 0}
+  - {fileID: 278764156259030502}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -244,6 +245,30 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &278764156259030502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3178515327648192199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b8c4a61274f60b4ea5fb4299cfdbf14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ShowLayerWeightsInspector: 1
+  ShowParameterInspector: 1
+  m_SynchronizeParameters:
+  - Type: 4
+    SynchronizeType: 1
+    Name: isWalking
+  - Type: 4
+    SynchronizeType: 0
+    Name: isRunning
+  m_SynchronizeLayers:
+  - SynchronizeType: 1
+    LayerIndex: 0
 --- !u!1001 &5937800066851479277
 PrefabInstance:
   m_ObjectHideFlags: 0
