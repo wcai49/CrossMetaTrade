@@ -1161,7 +1161,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementRange: 50
-  m_ControlPath: 
+  m_ControlPath: <Gamepad>/rightStick
 --- !u!114 &1256007235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1690,7 +1690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_MovementRange: 50
-  m_ControlPath: 
+  m_ControlPath: <Gamepad>/leftStick
 --- !u!114 &2057547969
 MonoBehaviour:
   m_ObjectHideFlags: 0
