@@ -29,7 +29,7 @@ public class LobbyManager : MonoBehaviourPunCallbacks
         Debug.Log("Joined");
         _playerProperties["Gender"] = isMale ? "male" : "female";
         PhotonNetwork.LocalPlayer.CustomProperties = _playerProperties;
-        PhotonNetwork.NickName = userNameInput.text + Random.Range(0, 1000).ToString("0000");
+        PhotonNetwork.NickName = userNameInput.text + " " + Random.Range(0, 1000).ToString("0000");
         PhotonNetwork.LoadLevel("MetaWorld");
     }
 
