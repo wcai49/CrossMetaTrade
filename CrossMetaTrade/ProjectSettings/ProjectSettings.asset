@@ -139,6 +139,7 @@ PlayerSettings:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   metroInputSource: 0
   wsaTransparentSwapchain: 0
   m_HolographicPauseOnTrackingLoss: 1
@@ -160,6 +161,7 @@ PlayerSettings:
   applicationIdentifier:
     Android: com.DefaultCompany.CrossMetaTrade
     Standalone: com.DefaultCompany.CrossMetaTrade
+    iPhone: com.DefaultCompany.CrossMetaTrade
   buildNumber:
     Standalone: 0
     iPhone: 0
@@ -564,8 +566,8 @@ PlayerSettings:
   logObjCUncaughtExceptions: 1
   enableCrashReportAPI: 0
   cameraUsageDescription: 
-  locationUsageDescription: 
-  microphoneUsageDescription: 
+  locationUsageDescription: voice chat
+  microphoneUsageDescription: Use Mic for voice chat
   bluetoothUsageDescription: 
   switchNMETAOverride: 
   switchNetLibKey: 
