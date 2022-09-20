@@ -12,9 +12,8 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject vcam_object;
 
     public GameObject phoneControlCanvas;
-    public GameObject backpackCanvas;
-
-    bool isBackpackOpen = true;
+    
+    GameObject player;
     private void Awake()
     {
 #if UNITY_ANDROID || UNITY_IOS
@@ -26,8 +25,8 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        GameObject player;
-        if(PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
+        
+        if (PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
         {
           player = PhotonNetwork.Instantiate(malePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
         }
@@ -41,8 +40,7 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     }
     public void toggleBackpack()
     {
-        isBackpackOpen = !isBackpackOpen;
-        backpackCanvas.SetActive(isBackpackOpen);
+        player.GetComponent<PlayerControl>().toggleBackpack();
     }
     public void showCursor()
     {
@@ -52,5 +50,10 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public void hideCursor()
     {
         Cursor.visible = false;
+    }
+
+    public void startSell()
+    {
+        player.GetComponent<PlayerControl>().StartSell();
     }
 }

@@ -12,6 +12,7 @@ public class PlayerControl : MonoBehaviour
     public float gravity = -9.81f;
     float turnSmoothVelocity;
     public bool isBackpackOpen = true;
+    public bool isSelling = false;
     Vector3 velocity;
 
     // sign components
@@ -20,12 +21,14 @@ public class PlayerControl : MonoBehaviour
     public Transform groundCheck;
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
+    public GameObject NFT_Prefab;
 
     bool isGrounded;
     Animator playerAnimator;
     PlayerControlAction playerControlAction;
     AudioSource footStepSound;
     GameObject backpackCanvas;
+    GameObject sellingObject;
 
     PhotonView view;
 
@@ -77,6 +80,10 @@ public class PlayerControl : MonoBehaviour
 
             if (moveInput.magnitude != 0)
             {
+                if (isSelling)
+                {
+                    StopSell();
+                }
                 playerAnimator.SetBool("isWalking", true);
                 if (!footStepSound.isPlaying)
                 {
@@ -114,5 +121,21 @@ public class PlayerControl : MonoBehaviour
         backpackCanvas.SetActive(isBackpackOpen);
 
         Cursor.visible = isBackpackOpen;
+    }
+
+    public void StartSell ()
+    {
+        playerAnimator.SetBool("isSelling", true);
+        isSelling = true;
+
+        sellingObject = PhotonNetwork.Instantiate(NFT_Prefab.name, new Vector3(transform.position.x, 0.42f, transform.position.z + 0.5f), Quaternion.identity);
+        sellingObject.transform.eulerAngles = new Vector3(-130f, 0f, 0f);
+    }
+
+    public void StopSell()
+    {
+        playerAnimator.SetBool("isSelling", false);
+        PhotonNetwork.Destroy(sellingObject);
+        isSelling = false;
     }
 }
