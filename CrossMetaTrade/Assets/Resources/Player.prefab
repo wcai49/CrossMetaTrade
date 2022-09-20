@@ -372,6 +372,8 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   turnSmoothTime: 0.1
   gravity: -9.81
+  isBackpackOpen: 1
+  isSelling: 0
   characterController: {fileID: 3178515327648192192}
   cam: {fileID: 0}
   groundCheck: {fileID: 1692388409172601536}
@@ -379,6 +381,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  NFT_Prefab: {fileID: 5360449160158601977, guid: 26a9d993617bcc249aca30d2d51e61ab, type: 3}
 --- !u!82 &3178515327648192195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -573,6 +576,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 0
     Name: isRunning
+  - Type: 4
+    SynchronizeType: 0
+    Name: isSelling
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0

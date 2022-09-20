@@ -11,11 +11,22 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject femalePrefab;
     public GameObject vcam_object;
 
+    public GameObject phoneControlCanvas;
+    
+    GameObject player;
+    private void Awake()
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        phoneControlCanvas.SetActive(true);
+#else
+        phoneControlCanvas.SetActive(false);
+#endif
+    }
+
     private void Start()
     {
-        Cursor.visible = false;
-        GameObject player;
-        if(PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
+        
+        if (PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
         {
           player = PhotonNetwork.Instantiate(malePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
         }
@@ -26,5 +37,23 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
         var vcam = vcam_object.GetComponent<CinemachineFreeLook>();
         vcam.LookAt = player.transform;
         vcam.Follow = player.transform;
+    }
+    public void toggleBackpack()
+    {
+        player.GetComponent<PlayerControl>().toggleBackpack();
+    }
+    public void showCursor()
+    {
+        Cursor.visible = true;
+    }
+
+    public void hideCursor()
+    {
+        Cursor.visible = false;
+    }
+
+    public void startSell()
+    {
+        player.GetComponent<PlayerControl>().StartSell();
     }
 }
