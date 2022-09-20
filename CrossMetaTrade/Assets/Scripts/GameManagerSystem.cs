@@ -11,9 +11,21 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject femalePrefab;
     public GameObject vcam_object;
 
+    public GameObject phoneControlCanvas;
+    public GameObject backpackCanvas;
+
+    bool isBackpackOpen = true;
+    private void Awake()
+    {
+#if UNITY_ANDROID || UNITY_IOS
+        phoneControlCanvas.SetActive(true);
+#else
+        phoneControlCanvas.SetActive(false);
+#endif
+    }
+
     private void Start()
     {
-        Cursor.visible = false;
         GameObject player;
         if(PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
         {
@@ -26,5 +38,19 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
         var vcam = vcam_object.GetComponent<CinemachineFreeLook>();
         vcam.LookAt = player.transform;
         vcam.Follow = player.transform;
+    }
+    public void toggleBackpack()
+    {
+        isBackpackOpen = !isBackpackOpen;
+        backpackCanvas.SetActive(isBackpackOpen);
+    }
+    public void showCursor()
+    {
+        Cursor.visible = true;
+    }
+
+    public void hideCursor()
+    {
+        Cursor.visible = false;
     }
 }

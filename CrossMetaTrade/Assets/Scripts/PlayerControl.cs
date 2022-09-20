@@ -11,6 +11,7 @@ public class PlayerControl : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f;
     float turnSmoothVelocity;
+    public bool isBackpackOpen = true;
     Vector3 velocity;
 
     // sign components
@@ -24,6 +25,7 @@ public class PlayerControl : MonoBehaviour
     Animator playerAnimator;
     PlayerControlAction playerControlAction;
     AudioSource footStepSound;
+    GameObject backpackCanvas;
 
     PhotonView view;
 
@@ -33,9 +35,11 @@ public class PlayerControl : MonoBehaviour
         // bind WASD movement
         playerControlAction.Player.Move.performed += moveValue => moveInput = moveValue.ReadValue<Vector2>();
         playerControlAction.Player.Move.canceled += moveValue => moveInput = moveValue.ReadValue<Vector2>();
-
+        
         cam = Camera.main.transform;
         view = GetComponent<PhotonView>();
+
+        backpackCanvas = GameObject.Find("BackpackCanvas");
     }
 
     #region - Enable / Disable -
@@ -96,7 +100,19 @@ public class PlayerControl : MonoBehaviour
                 playerAnimator.SetBool("isWalking", false);
                 footStepSound.Stop();
             }
+
+            if (playerControlAction.UI.Backpack.triggered)
+            {
+                toggleBackpack();
+            }
         }
 
+    }
+    public void toggleBackpack ()
+    {
+        isBackpackOpen = !isBackpackOpen;
+        backpackCanvas.SetActive(isBackpackOpen);
+
+        Cursor.visible = isBackpackOpen;
     }
 }

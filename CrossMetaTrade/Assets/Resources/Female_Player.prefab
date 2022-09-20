@@ -521,6 +521,7 @@ MonoBehaviour:
   moveInput: {x: 0, y: 0}
   turnSmoothTime: 0.1
   gravity: -9.81
+  isBackpackOpen: 1
   characterController: {fileID: 5576346517095171010}
   cam: {fileID: 0}
   groundCheck: {fileID: 466132294378802207}
