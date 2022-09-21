@@ -37,7 +37,6 @@ public class PlayerControl : MonoBehaviour
     Button sellBtn;
 
     PhotonView view;
-
     private void Awake()
     {
         playerControlAction = new PlayerControlAction();
@@ -130,7 +129,8 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = isBackpackOpen;
     }
 
-    public void StartSell(Button btn)
+    public void StartSell()
+
     {
         if (isSelling)
         {
