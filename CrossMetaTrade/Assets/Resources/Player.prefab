@@ -382,6 +382,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   NFT_Prefab: {fileID: 5360449160158601977, guid: 26a9d993617bcc249aca30d2d51e61ab, type: 3}
+  Teams_Logo: {fileID: 998667079534755903, guid: 61e6c6e597669b948af0889482b5ab0c, type: 3}
 --- !u!82 &3178515327648192195
 AudioSource:
   m_ObjectHideFlags: 0

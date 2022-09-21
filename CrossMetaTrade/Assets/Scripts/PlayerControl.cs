@@ -2,6 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
+#if !UNITY_WEBGL
+using Photon.Voice.Unity;
+using Photon.Voice.PUN;
+#endif
 
 public class PlayerControl : MonoBehaviour
 {
@@ -22,6 +26,7 @@ public class PlayerControl : MonoBehaviour
     public float groundDistance = 0.4f;
     public LayerMask groundMask;
     public GameObject NFT_Prefab;
+    public GameObject Teams_Logo;
 
     bool isGrounded;
     Animator playerAnimator;
@@ -29,19 +34,20 @@ public class PlayerControl : MonoBehaviour
     AudioSource footStepSound;
     GameObject backpackCanvas;
     GameObject sellingObject;
+    GameObject voiceActiveLogo;
 
     PhotonView view;
-
+    PhotonVoiceView voiceView;
     private void Awake()
     {
         playerControlAction = new PlayerControlAction();
         // bind WASD movement
         playerControlAction.Player.Move.performed += moveValue => moveInput = moveValue.ReadValue<Vector2>();
         playerControlAction.Player.Move.canceled += moveValue => moveInput = moveValue.ReadValue<Vector2>();
-        
+
         cam = Camera.main.transform;
         view = GetComponent<PhotonView>();
-
+        voiceView = GetComponent<PhotonVoiceView>();
         backpackCanvas = GameObject.Find("BackpackCanvas");
     }
 
@@ -73,10 +79,10 @@ public class PlayerControl : MonoBehaviour
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-            if(isGrounded && velocity.y < 0)
+            if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
-            }    
+            }
 
             if (moveInput.magnitude != 0)
             {
@@ -112,10 +118,19 @@ public class PlayerControl : MonoBehaviour
             {
                 toggleBackpack();
             }
+
+            if (voiceView.IsRecording)
+            {
+                StartTalking();
+            }
+            else
+            {
+                StopTalking();
+            }
         }
 
     }
-    public void toggleBackpack ()
+    public void toggleBackpack()
     {
         isBackpackOpen = !isBackpackOpen;
         backpackCanvas.SetActive(isBackpackOpen);
@@ -123,7 +138,7 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = isBackpackOpen;
     }
 
-    public void StartSell ()
+    public void StartSell()
     {
         playerAnimator.SetBool("isSelling", true);
         isSelling = true;
@@ -137,5 +152,30 @@ public class PlayerControl : MonoBehaviour
         playerAnimator.SetBool("isSelling", false);
         PhotonNetwork.Destroy(sellingObject);
         isSelling = false;
+    }
+
+    public void StartTalking()
+    {
+        if (voiceActiveLogo != null)
+        {
+            return;
+        }
+
+        voiceActiveLogo = PhotonNetwork.Instantiate(Teams_Logo.name, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+        voiceActiveLogo.transform.Rotate(90f, 0, 0);
+
+#if UNITY_IOS
+            // Add ios facial relevant stuffs here. @Tab
+#endif
+
+    }
+
+    public void StopTalking()
+    {
+        if (voiceActiveLogo == null)
+        {
+            return;
+        }
+        PhotonNetwork.Destroy(voiceActiveLogo);
     }
 }
