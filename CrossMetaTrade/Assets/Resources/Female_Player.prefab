@@ -461,6 +461,7 @@ GameObject:
   - component: {fileID: 6235357645257552021}
   - component: {fileID: 6034989174963121111}
   - component: {fileID: 7225113788256086337}
+  - component: {fileID: 5397212865134703645}
   m_Layer: 0
   m_Name: Female_Player
   m_TagString: Untagged
@@ -531,7 +532,6 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   NFT_Prefab: {fileID: 5360449160158601977, guid: 26a9d993617bcc249aca30d2d51e61ab, type: 3}
-  Teams_Logo: {fileID: 998667079534755903, guid: 61e6c6e597669b948af0889482b5ab0c, type: 3}
 --- !u!82 &7772292598478175807
 AudioSource:
   m_ObjectHideFlags: 0
@@ -751,6 +751,19 @@ MonoBehaviour:
   AutoCreateRecorderIfNotFound: 0
   UsePrimaryRecorder: 1
   SetupDebugSpeaker: 0
+--- !u!114 &5397212865134703645
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5864644248895640668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dc417cd6ba5347458c81b3d881ed398, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Teams_Logo: {fileID: 998667079534755903, guid: 61e6c6e597669b948af0889482b5ab0c, type: 3}
 --- !u!1001 &5524913409306496936
 PrefabInstance:
   m_ObjectHideFlags: 0

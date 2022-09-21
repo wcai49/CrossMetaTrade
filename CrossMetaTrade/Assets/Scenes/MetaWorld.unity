@@ -278,6 +278,7 @@ GameObject:
   - component: {fileID: 348972797}
   - component: {fileID: 348972799}
   - component: {fileID: 348972798}
+  - component: {fileID: 348972800}
   m_Layer: 0
   m_Name: VoiceManager
   m_TagString: Untagged
@@ -373,7 +374,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.05
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: 0
+  photonMicrophoneDeviceId: -1
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -405,6 +406,18 @@ MonoBehaviour:
   trySamplingRateMatch: 0
   useMicrophoneTypeFallback: 1
   recordOnlyWhenJoined: 1
+--- !u!114 &348972800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 348972796}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5971510f3ab98b24786e22de201820e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &367577965
 PrefabInstance:
   m_ObjectHideFlags: 0
