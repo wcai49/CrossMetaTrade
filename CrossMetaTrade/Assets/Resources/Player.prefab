@@ -501,13 +501,15 @@ MonoBehaviour:
   isBackpackOpen: 1
   isSelling: 0
   characterController: {fileID: 3178515327648192192}
+  userCamera: {fileID: 0}
   cam: {fileID: 0}
   groundCheck: {fileID: 1692388409172601536}
+  handPosition: {fileID: 4837765630062572862}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  NFT_Prefab: {fileID: 8937944953601233606}
+  NFT_Prefab: {fileID: 5811184362054456168, guid: 4598d11012b78934db79d911399a1bae, type: 3}
 --- !u!82 &3178515327648192195
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1060,11 +1062,6 @@ PrefabInstance:
 --- !u!4 &8935824715481587288 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5363713163906870887, guid: 26a9d993617bcc249aca30d2d51e61ab, type: 3}
-  m_PrefabInstance: {fileID: 3922021233741197375}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &8937944953601233606 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5360449160158601977, guid: 26a9d993617bcc249aca30d2d51e61ab, type: 3}
   m_PrefabInstance: {fileID: 3922021233741197375}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5937800066851479277
