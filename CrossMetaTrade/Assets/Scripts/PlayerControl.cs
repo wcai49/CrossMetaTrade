@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class PlayerControl : MonoBehaviour
@@ -17,11 +18,15 @@ public class PlayerControl : MonoBehaviour
 
     // sign components
     public CharacterController characterController;
+    public Camera userCamera;
     public Transform cam;
     public Transform groundCheck;
+    public Transform handPosition;
     public float groundDistance = 0.4f;
+
     public LayerMask groundMask;
     public GameObject NFT_Prefab;
+
 
     bool isGrounded;
     Animator playerAnimator;
@@ -29,6 +34,7 @@ public class PlayerControl : MonoBehaviour
     AudioSource footStepSound;
     GameObject backpackCanvas;
     GameObject sellingObject;
+    Button sellBtn;
 
     PhotonView view;
 
@@ -38,10 +44,10 @@ public class PlayerControl : MonoBehaviour
         // bind WASD movement
         playerControlAction.Player.Move.performed += moveValue => moveInput = moveValue.ReadValue<Vector2>();
         playerControlAction.Player.Move.canceled += moveValue => moveInput = moveValue.ReadValue<Vector2>();
-        
-        cam = Camera.main.transform;
-        view = GetComponent<PhotonView>();
 
+        cam = Camera.main.transform;
+        userCamera = Camera.main;
+        view = GetComponent<PhotonView>();
         backpackCanvas = GameObject.Find("BackpackCanvas");
     }
 
@@ -73,10 +79,10 @@ public class PlayerControl : MonoBehaviour
         {
             isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
 
-            if(isGrounded && velocity.y < 0)
+            if (isGrounded && velocity.y < 0)
             {
                 velocity.y = -2f;
-            }    
+            }
 
             if (moveInput.magnitude != 0)
             {
@@ -112,10 +118,11 @@ public class PlayerControl : MonoBehaviour
             {
                 toggleBackpack();
             }
+
         }
 
     }
-    public void toggleBackpack ()
+    public void toggleBackpack()
     {
         isBackpackOpen = !isBackpackOpen;
         backpackCanvas.SetActive(isBackpackOpen);
@@ -123,19 +130,51 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = isBackpackOpen;
     }
 
-    public void StartSell ()
+    public void StartSell(Button btn)
     {
+        if (isSelling)
+        {
+            return;
+        }
+
+        sellBtn = btn;
+        sellBtn.interactable = false;
+        sellingObject = PhotonNetwork.Instantiate(NFT_Prefab.name, handPosition.position, Quaternion.identity);
+        float rotateAngle = Vector3.Angle(sellingObject.transform.forward, transform.forward);
+        sellingObject.transform.Rotate(new Vector3(30f, rotateAngle, 0f));
         playerAnimator.SetBool("isSelling", true);
         isSelling = true;
 
-        sellingObject = PhotonNetwork.Instantiate(NFT_Prefab.name, new Vector3(transform.position.x, 0.42f, transform.position.z + 0.5f), Quaternion.identity);
-        sellingObject.transform.eulerAngles = new Vector3(-130f, 0f, 0f);
+
     }
 
     public void StopSell()
     {
+        if (!isSelling)
+        {
+            return;
+        }
+
+        sellBtn.interactable = true;
+        sellBtn = null;
         playerAnimator.SetBool("isSelling", false);
-        PhotonNetwork.Destroy(sellingObject);
+        if (sellingObject != null)
+        {
+            PhotonNetwork.Destroy(sellingObject);
+        }
         isSelling = false;
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.GetComponent<PlayerControl>().isSelling)
+        {
+            Debug.Log("Start");
+        }
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        Debug.Log("Left");
     }
 }
