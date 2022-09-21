@@ -120,6 +120,7 @@ MonoBehaviour:
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
   controlID: 112
+
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -145,6 +146,7 @@ MonoBehaviour:
   m_MaxSize: {x: 16192, y: 16192}
   vertical: 1
   controlID: 30
+
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -170,6 +172,7 @@ MonoBehaviour:
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 31
+
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -249,6 +252,7 @@ MonoBehaviour:
   m_MaxSize: {x: 16192, y: 8096}
   vertical: 0
   controlID: 120
+
 --- !u!114 &11
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -259,7 +263,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: ProjectBrowser
+  m_Name: ConsoleWindow
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -276,6 +280,7 @@ MonoBehaviour:
   - {fileID: 19}
   m_Selected: 0
   m_LastSelected: 1
+
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -497,7 +502,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 1
-      snapOffset: {x: 0, y: 25}
+      snapOffset: {x: 0, y: 0}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: unity-transform-toolbar
@@ -648,6 +653,7 @@ MonoBehaviour:
     m_Target: {x: -0.38798726, y: 0.52992284, z: -0.56216407}
     speed: 2
     m_Value: {x: -0.38798726, y: 0.52992284, z: -0.56216407}
+
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -701,6 +707,7 @@ MonoBehaviour:
     m_Target: 1.391646
     speed: 2
     m_Value: 1.391646
+
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -938,6 +945,7 @@ MonoBehaviour:
     m_SelectedIDs: e0640000
     m_LastClickedID: 25824
     m_ExpandedIDs: 00000000e06400006065000000ca9a3bffffff7f
+
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1083,6 +1091,7 @@ MonoBehaviour:
       m_SelectedIDs: 
       m_LastClickedID: 0
       m_ExpandedIDs: d0b6e4ffdcb6e4ffe4430300ea430300
+
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 

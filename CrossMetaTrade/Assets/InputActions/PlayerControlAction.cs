@@ -149,6 +149,15 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""4522e9e4-0392-4814-ad64-99399f4a4924"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -160,6 +169,17 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Backpack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e01eb5db-0929-4245-b267-8352870a3310"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -175,6 +195,7 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Backpack = m_UI.FindAction("Backpack", throwIfNotFound: true);
+        m_UI_Interaction = m_UI.FindAction("Interaction", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -276,11 +297,13 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_UI;
     private IUIActions m_UIActionsCallbackInterface;
     private readonly InputAction m_UI_Backpack;
+    private readonly InputAction m_UI_Interaction;
     public struct UIActions
     {
         private @PlayerControlAction m_Wrapper;
         public UIActions(@PlayerControlAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Backpack => m_Wrapper.m_UI_Backpack;
+        public InputAction @Interaction => m_Wrapper.m_UI_Interaction;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -293,6 +316,9 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
                 @Backpack.started -= m_Wrapper.m_UIActionsCallbackInterface.OnBackpack;
                 @Backpack.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnBackpack;
                 @Backpack.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnBackpack;
+                @Interaction.started -= m_Wrapper.m_UIActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnInteraction;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -300,6 +326,9 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
                 @Backpack.started += instance.OnBackpack;
                 @Backpack.performed += instance.OnBackpack;
                 @Backpack.canceled += instance.OnBackpack;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
             }
         }
     }
@@ -312,5 +341,6 @@ public partial class @PlayerControlAction : IInputActionCollection2, IDisposable
     public interface IUIActions
     {
         void OnBackpack(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
     }
 }
