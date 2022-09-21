@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Photon.Pun;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class GameManagerSystem : MonoBehaviourPunCallbacks
 
@@ -12,6 +13,7 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject vcam_object;
 
     public GameObject phoneControlCanvas;
+    public Button sellingBtn;    
     
     GameObject player;
     private void Awake()
@@ -54,6 +56,6 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
 
     public void startSell()
     {
-        player.GetComponent<PlayerControl>().StartSell();
+        player.GetComponent<PlayerControl>().StartSell(sellingBtn);
     }
 }

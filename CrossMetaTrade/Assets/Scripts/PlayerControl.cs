@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Photon.Pun;
 
 public class PlayerControl : MonoBehaviour
@@ -17,11 +18,14 @@ public class PlayerControl : MonoBehaviour
 
     // sign components
     public CharacterController characterController;
+    public Camera userCamera;
     public Transform cam;
     public Transform groundCheck;
     public float groundDistance = 0.4f;
+    
     public LayerMask groundMask;
     public GameObject NFT_Prefab;
+
 
     bool isGrounded;
     Animator playerAnimator;
@@ -29,6 +33,8 @@ public class PlayerControl : MonoBehaviour
     AudioSource footStepSound;
     GameObject backpackCanvas;
     GameObject sellingObject;
+
+    Button sellBtn;
 
     PhotonView view;
 
@@ -40,6 +46,7 @@ public class PlayerControl : MonoBehaviour
         playerControlAction.Player.Move.canceled += moveValue => moveInput = moveValue.ReadValue<Vector2>();
         
         cam = Camera.main.transform;
+        userCamera = Camera.main;
         view = GetComponent<PhotonView>();
 
         backpackCanvas = GameObject.Find("BackpackCanvas");
@@ -112,6 +119,14 @@ public class PlayerControl : MonoBehaviour
             {
                 toggleBackpack();
             }
+
+            if (playerControlAction.UI.Interaction.triggered)
+            {
+                // check if player hit any collider
+                // check if collider has interaction
+                
+                // if interaction not null, open up trading panel
+            }
         }
 
     }
@@ -123,19 +138,32 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = isBackpackOpen;
     }
 
-    public void StartSell ()
-    {
+    public void StartSell (Button btn)
+    {   if (isSelling)
+        {
+            return;
+        }
+
+        sellBtn = btn;
+        sellBtn.interactable = false;
+        NFT_Prefab.SetActive(true);
         playerAnimator.SetBool("isSelling", true);
         isSelling = true;
 
-        sellingObject = PhotonNetwork.Instantiate(NFT_Prefab.name, new Vector3(transform.position.x, 0.42f, transform.position.z + 0.5f), Quaternion.identity);
-        sellingObject.transform.eulerAngles = new Vector3(-130f, 0f, 0f);
+        
     }
 
     public void StopSell()
     {
+        if (!isSelling)
+        {
+            return;
+        }
+
+        sellBtn.interactable = true;
+        sellBtn = null;
         playerAnimator.SetBool("isSelling", false);
-        PhotonNetwork.Destroy(sellingObject);
+        NFT_Prefab.SetActive(false);
         isSelling = false;
     }
 }
