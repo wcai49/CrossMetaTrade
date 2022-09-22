@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e836309f22118a4bb2ddd86028002a0, type: 3}
+  m_Name: new NFT
+  m_EditorClassIdentifier: 
+  NFT_Image: {fileID: 21300000, guid: 0753b9442fb4778489468c5f3e9ee16b, type: 3}
+  Details: This is a FAKE NFT monkey that I downloaded from the Internet. Thus, it
+    has no value at all. Lol.
+  nft_name: FAKE NFT MONKEY
+  ownership: Wenlei Cai
+  price: 2
+  Currency_icon: {fileID: 21300000, guid: e38de58023b2bfd4ba895b8584ca96af, type: 3}
+  graph: {fileID: 21300000, guid: 521e97f055473e9429f687189c66b993, type: 3}
+  offers: 

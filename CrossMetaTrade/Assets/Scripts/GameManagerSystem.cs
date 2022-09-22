@@ -13,6 +13,9 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject vcam_object;
 
     public GameObject phoneControlCanvas;
+    public GameObject tradingCanvas;
+
+    public GameObject backpackCanvas;
     public Button sellingBtn;
 
     GameObject player;
@@ -57,5 +60,34 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public void startSell()
     {
         player.GetComponent<PlayerControl>().StartSell(sellingBtn);
+    }
+
+    public void StartTrading()
+    {
+        // 1. Pop up trading UI
+        // 2. Display NFT info
+        // 3. Buy -> wallet spend amount
+        tradingCanvas.SetActive(true);
+        Cursor.visible = true;
+    }
+
+    public void StopTrading()
+    {
+        // Hide trading UI
+        tradingCanvas.SetActive(false);
+        Cursor.visible = backpackCanvas.activeInHierarchy;
+    }
+
+    public void placeOrder()
+    {
+        bool result = backpackCanvas.GetComponent<WalletDisplay>().wallet.spend("Bitcoin", 2);
+
+        if (result)
+        {
+            tradingCanvas.GetComponent<TradingDisplay>().nft.AddOffers(PhotonNetwork.NickName);
+            tradingCanvas.GetComponent<TradingDisplay>().updateOffer();
+            backpackCanvas.GetComponent<WalletDisplay>().updateWallet();
+        }
+
     }
 }

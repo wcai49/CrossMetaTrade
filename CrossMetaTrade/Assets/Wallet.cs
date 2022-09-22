@@ -15,23 +15,33 @@ public class Wallet : ScriptableObject
     public int ethereum_quantity;
 
 
-    public void spend(string currency, int amount)
+    public bool spend(string currency, int amount)
     {
+        bool result = false;
         if (currency == null || amount <= 0)
         {
-            return;
+            return result;
         }
         switch (currency)
         {
             case "Bitcoin":
-                bitcoin_quantity -= amount;
+                if (bitcoin_quantity >= amount)
+                {
+                    bitcoin_quantity -= amount;
+                    result = true;
+                }
                 break;
             case "Ethereum":
-                ethereum_quantity -= amount;
+                if (ethereum_quantity >= amount)
+                {
+                    ethereum_quantity -= amount;
+                    result = true;
+                }
                 break;
             default:
-                break;     
+                break;
         }
+        return result;
     }
 
     public void gain(string currency, int amount)

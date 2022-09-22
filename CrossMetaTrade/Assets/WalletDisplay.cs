@@ -24,4 +24,10 @@ public class WalletDisplay : MonoBehaviour
         ether_amount.text = wallet.ethereum_quantity.ToString();
     }
 
+    public void updateWallet()
+    {
+        bit_amount.text = wallet.bitcoin_quantity.ToString();
+        ether_amount.text = wallet.ethereum_quantity.ToString();
+    }
+
 }

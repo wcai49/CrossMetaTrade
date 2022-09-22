@@ -34,6 +34,7 @@ public class PlayerControl : MonoBehaviour
     AudioSource footStepSound;
     GameObject backpackCanvas;
     GameObject sellingObject;
+    GameObject inter_target;
     Button sellBtn;
 
     PhotonView view;
@@ -118,6 +119,11 @@ public class PlayerControl : MonoBehaviour
                 toggleBackpack();
             }
 
+            if (inter_target != null && playerControlAction.UI.Interaction.triggered)
+            {
+                GameObject.Find("GameManager").GetComponent<GameManagerSystem>().StartTrading();
+            }
+
         }
 
     }
@@ -165,16 +171,33 @@ public class PlayerControl : MonoBehaviour
         isSelling = false;
     }
 
-    private void OnCollisionEnter(Collision collision)
+
+    // called once per frame for every Collider or Rigidbody that touches another Collider or Rigidbody.
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.collider.GetComponent<PlayerControl>().isSelling)
+        if (collision.collider.gameObject.layer == 3)
         {
-            Debug.Log("Start");
+            return;
+        }
+
+        if (collision.collider.tag == "Player")
+        {
+            inter_target = collision.gameObject;
         }
     }
 
+    // called when this collider/rigidbody has stopped touching another rigidbody/collider.
     private void OnCollisionExit(Collision collision)
     {
+        if (collision.collider.gameObject.layer == 3)
+        {
+            return;
+        }
+        if (inter_target != null && inter_target == collision.gameObject)
+        {
+            inter_target = null;
+            GameObject.Find("GameManager").GetComponent<GameManagerSystem>().StopTrading();
+        }
         Debug.Log("Left");
     }
 }
