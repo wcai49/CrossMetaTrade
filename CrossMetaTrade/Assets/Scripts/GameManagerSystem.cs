@@ -13,8 +13,8 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject vcam_object;
 
     public GameObject phoneControlCanvas;
-    public Button sellingBtn;    
-    
+    public Button sellingBtn;
+
     GameObject player;
     private void Awake()
     {
@@ -27,14 +27,14 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
 
     private void Start()
     {
-        
+
         if (PhotonNetwork.LocalPlayer.CustomProperties["Gender"] == "male")
         {
-          player = PhotonNetwork.Instantiate(malePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
+            player = PhotonNetwork.Instantiate(malePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
         }
         else
         {
-          player = PhotonNetwork.Instantiate(femalePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
+            player = PhotonNetwork.Instantiate(femalePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
         }
         var vcam = vcam_object.GetComponent<CinemachineFreeLook>();
         vcam.LookAt = player.transform;
