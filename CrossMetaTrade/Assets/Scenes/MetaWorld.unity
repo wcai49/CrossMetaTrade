@@ -385,7 +385,7 @@ MonoBehaviour:
   voiceDetectionThreshold: 0.05
   voiceDetectionDelayMs: 500
   unityMicrophoneDevice: 
-  photonMicrophoneDeviceId: -1
+  photonMicrophoneDeviceId: 0
   interestGroup: 0
   debugEchoMode: 0
   reliableMode: 0
@@ -656,7 +656,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   malePrefab: {fileID: 3178515327648192199, guid: faaa197c0a018204aba89e482b9cff34, type: 3}
-  femalePrefab: {fileID: 5864644248895640668, guid: 7e896b401e525fe4caa97951ee5fae37, type: 3}
+  femalePrefab: {fileID: 4652453735890494685, guid: 7e896b401e525fe4caa97951ee5fae37, type: 3}
   vcam_object: {fileID: 1295075534}
   phoneControlCanvas: {fileID: 1465829191}
   sellingBtn: {fileID: 4221944216599008124}

@@ -129,7 +129,7 @@ public class PlayerControl : MonoBehaviour
         Cursor.visible = isBackpackOpen;
     }
 
-    public void StartSell()
+    public void StartSell(Button btn)
 
     {
         if (isSelling)
