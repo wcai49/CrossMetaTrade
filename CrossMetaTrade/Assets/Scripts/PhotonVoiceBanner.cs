@@ -19,6 +19,7 @@ public class PhotonVoiceBanner : MonoBehaviour
 
 #if !UNITY_WEBGL
     public GameObject Teams_Logo;
+    GameObject faceCanvas;
     GameObject voiceActiveLogo;
     PhotonVoiceView voiceView;
     PhotonView view;
@@ -57,7 +58,18 @@ public class PhotonVoiceBanner : MonoBehaviour
         voiceActiveLogo.transform.Rotate(90f, 0, 0);
 
 #if UNITY_IOS
-            // Add ios facial relevant stuffs here. @Tab
+        // Add ios facial relevant stuffs here. @Tab
+        GameObject parent = GameObject.Find("LiveCapture");
+        Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
+        foreach (Transform t in trs)
+        {
+            if (t.name == "LiveCaptureCanvas")
+            {
+                faceCanvas = t.gameObject;
+                faceCanvas.SetActive(true);
+            }
+        }
+
 #endif
 
     }
@@ -69,6 +81,10 @@ public class PhotonVoiceBanner : MonoBehaviour
             return;
         }
         PhotonNetwork.Destroy(voiceActiveLogo);
+#if UNITY_IOS
+        // Add ios facial relevant stuffs here. @Tab
+        faceCanvas.SetActive(false);
+#endif
     }
 #endif
 }
