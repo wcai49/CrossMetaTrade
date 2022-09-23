@@ -1394,7 +1394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lobbyInput: {fileID: 303153704}
   userNameInput: {fileID: 670582591}
-  current_char: 0
+  isMale: 0
 --- !u!4 &1226995005
 Transform:
   m_ObjectHideFlags: 0
