@@ -12,7 +12,7 @@ public class PlayerControl : MonoBehaviour
     public float turnSmoothTime = 0.1f;
     public float gravity = -9.81f;
     float turnSmoothVelocity;
-    public bool isBackpackOpen = true;
+    public bool isBackpackOpen = false;
     public bool isSelling = false;
     Vector3 velocity;
 
@@ -26,13 +26,15 @@ public class PlayerControl : MonoBehaviour
 
     public LayerMask groundMask;
     public GameObject NFT_Prefab;
+    public GameObject subscribeCanvas;
+    public GameObject backpackCanvas;
+
 
 
     bool isGrounded;
     Animator playerAnimator;
     PlayerControlAction playerControlAction;
     AudioSource footStepSound;
-    GameObject backpackCanvas;
     GameObject sellingObject;
     GameObject inter_target;
     Button sellBtn;
@@ -48,7 +50,6 @@ public class PlayerControl : MonoBehaviour
         cam = Camera.main.transform;
         userCamera = Camera.main;
         view = GetComponent<PhotonView>();
-        backpackCanvas = GameObject.Find("BackpackCanvas");
     }
 
     #region - Enable / Disable -
@@ -199,5 +200,11 @@ public class PlayerControl : MonoBehaviour
             GameObject.Find("GameManager").GetComponent<GameManagerSystem>().StopTrading();
         }
         Debug.Log("Left");
+    }
+
+    public void setSubscriptionCanvas(bool visibility, bool cursor)
+    {
+        subscribeCanvas.SetActive(visibility);
+        Cursor.visible = cursor;
     }
 }
