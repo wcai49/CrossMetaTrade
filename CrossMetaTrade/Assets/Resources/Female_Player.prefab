@@ -1254,6 +1254,42 @@ Transform:
   m_Father: {fileID: 616504232035936053}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3463405237636341643
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1541073339870120208}
+  m_Layer: 0
+  m_Name: SpeakerPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1541073339870120208
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3463405237636341643}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8553003036155183851}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 0.5}
+  m_AnchorMax: {x: 1, y: 0.5}
+  m_AnchoredPosition: {x: -25, y: 0}
+  m_SizeDelta: {x: 50, y: 50}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3487175722406807426
 GameObject:
   m_ObjectHideFlags: 0
@@ -1740,6 +1776,9 @@ MonoBehaviour:
   - Type: 4
     SynchronizeType: 1
     Name: isSelling
+  - Type: 9
+    SynchronizeType: 1
+    Name: talk
   m_SynchronizeLayers:
   - SynchronizeType: 1
     LayerIndex: 0
@@ -1774,7 +1813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc417cd6ba5347458c81b3d881ed398, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Teams_Logo: {fileID: 998667079534755903, guid: 61e6c6e597669b948af0889482b5ab0c, type: 3}
+  speakerSprite: {fileID: 3461520178853193146, guid: 4cf73489478164549b58738344e9423f, type: 3}
 --- !u!114 &3499805747968719615
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1806,6 +1845,7 @@ MonoBehaviour:
   NFT_Prefab: {fileID: 5811184362054456168, guid: 4598d11012b78934db79d911399a1bae, type: 3}
   subscribeCanvas: {fileID: 6081084503282622297}
   backpackCanvas: {fileID: 8987929891146295925}
+  phone_e_button: {fileID: 0}
 --- !u!136 &6589111921258054904
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -3257,6 +3297,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8847734236203412916}
+  - {fileID: 1541073339870120208}
   m_Father: {fileID: 4208629718368508400}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3865,6 +3906,30 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -70
       objectReference: {fileID: 0}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 3499805747968719615}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartSell
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerControl, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 7949707309632009044}
+    - target: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.UI.Button, UnityEngine.UI
+      objectReference: {fileID: 0}
     - target: {fileID: 9048365221005136746, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -3891,6 +3956,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+--- !u!114 &7949707309632009044 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8945659361618086032, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}
+  m_PrefabInstance: {fileID: 1330344640000687044}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8987929891146295925 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7984283985607266737, guid: 8baba85476d82e94fbb854118dfb13f9, type: 3}

@@ -9,7 +9,7 @@ public class NFTs : ScriptableObject
     public string Details;
     public string nft_name;
     public string ownership;
-    public int price;
+    public double price;
     public Sprite Currency_icon;
     public Sprite graph;
     public string offers;
