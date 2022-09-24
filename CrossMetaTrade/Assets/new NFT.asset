@@ -17,7 +17,7 @@ MonoBehaviour:
     has no value at all. Lol.
   nft_name: FAKE NFT MONKEY
   ownership: Wenlei Cai
-  price: 2
+  price: 0.18
   Currency_icon: {fileID: 21300000, guid: e38de58023b2bfd4ba895b8584ca96af, type: 3}
   graph: {fileID: 21300000, guid: 521e97f055473e9429f687189c66b993, type: 3}
   offers: 

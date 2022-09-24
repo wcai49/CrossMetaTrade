@@ -18,8 +18,8 @@ public class PhotonVoiceBanner : MonoBehaviour
 #endif
 
 #if !UNITY_WEBGL
-    public GameObject Teams_Logo;
-    GameObject faceCanvas;
+
+    public GameObject speakerSprite;
     GameObject voiceActiveLogo;
     PhotonVoiceView voiceView;
     PhotonView view;
@@ -54,22 +54,11 @@ public class PhotonVoiceBanner : MonoBehaviour
             return;
         }
 
-        voiceActiveLogo = PhotonNetwork.Instantiate(Teams_Logo.name, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
-        voiceActiveLogo.transform.Rotate(90f, 0, 0);
+        voiceActiveLogo = PhotonNetwork.Instantiate(speakerSprite.name, new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+        GetComponent<Animator>().SetTrigger("talk");
 
 #if UNITY_IOS
-        // Add ios facial relevant stuffs here. @Tab
-        GameObject parent = GameObject.Find("LiveCapture");
-        Transform[] trs = parent.GetComponentsInChildren<Transform>(true);
-        foreach (Transform t in trs)
-        {
-            if (t.name == "LiveCaptureCanvas")
-            {
-                faceCanvas = t.gameObject;
-                faceCanvas.SetActive(true);
-            }
-        }
-
+            // Add ios facial relevant stuffs here. @Tab
 #endif
 
     }
@@ -81,10 +70,6 @@ public class PhotonVoiceBanner : MonoBehaviour
             return;
         }
         PhotonNetwork.Destroy(voiceActiveLogo);
-#if UNITY_IOS
-        // Add ios facial relevant stuffs here. @Tab
-        faceCanvas.SetActive(false);
-#endif
     }
 #endif
 }

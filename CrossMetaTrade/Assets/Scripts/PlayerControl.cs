@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.VFX;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     float turnSmoothVelocity;
     public bool isBackpackOpen = false;
     public bool isSelling = false;
+    public VisualEffect levelup;
     Vector3 velocity;
 
     // sign components
@@ -28,6 +30,8 @@ public class PlayerControl : MonoBehaviour
     public GameObject NFT_Prefab;
     public GameObject subscribeCanvas;
     public GameObject backpackCanvas;
+
+    public Button phone_e_button;
 
 
 
@@ -50,6 +54,10 @@ public class PlayerControl : MonoBehaviour
         cam = Camera.main.transform;
         userCamera = Camera.main;
         view = GetComponent<PhotonView>();
+
+#if UNITY_ANDROID || UNITY_IOS
+        phone_e_button = GameObject.Find("E").GetComponent<Button>();
+#endif
     }
 
     #region - Enable / Disable -
@@ -119,12 +127,20 @@ public class PlayerControl : MonoBehaviour
             {
                 toggleBackpack();
             }
-
+#if UNITYI_ANDROID || UNITY_IOS
+            if (inter_target != null)
+            {
+                phone_e_button.interactable = true;
+            }
+            else{
+                phone_e_button.interactable = false;
+            }
+#else
             if (inter_target != null && playerControlAction.UI.Interaction.triggered)
             {
-                GameObject.Find("GameManager").GetComponent<GameManagerSystem>().StartTrading();
+                startBuying();
             }
-
+#endif
         }
 
     }
@@ -148,11 +164,9 @@ public class PlayerControl : MonoBehaviour
         sellBtn.interactable = false;
         sellingObject = PhotonNetwork.Instantiate(NFT_Prefab.name, handPosition.position, Quaternion.identity);
         float rotateAngle = Vector3.Angle(sellingObject.transform.forward, transform.forward);
-        sellingObject.transform.Rotate(new Vector3(30f, rotateAngle, 0f));
+        sellingObject.transform.eulerAngles = new Vector3(30f, transform.eulerAngles.y, 0);
         playerAnimator.SetBool("isSelling", true);
         isSelling = true;
-
-
     }
 
     public void StopSell()
@@ -197,7 +211,7 @@ public class PlayerControl : MonoBehaviour
         if (inter_target != null && inter_target == collision.gameObject)
         {
             inter_target = null;
-            GameObject.Find("GameManager").GetComponent<GameManagerSystem>().StopTrading();
+            GameObject.Find("GameManager").GetComponent<GameManagerSystem>().HideTradingCanvas();
         }
         Debug.Log("Left");
     }
@@ -206,5 +220,15 @@ public class PlayerControl : MonoBehaviour
     {
         subscribeCanvas.SetActive(visibility);
         Cursor.visible = cursor;
+    }
+
+    public void Levelup()
+    {
+        levelup.Play();
+    }
+
+    public void startBuying()
+    {
+        GameObject.Find("GameManager").GetComponent<GameManagerSystem>().ShowTradingCanvas();
     }
 }

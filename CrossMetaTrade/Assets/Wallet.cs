@@ -11,11 +11,13 @@ public class Wallet : ScriptableObject
     public Sprite bitcoin_sprite;
     public Sprite ethereum_sprite;
 
-    public int bitcoin_quantity;
-    public int ethereum_quantity;
+    public double bitcoin_quantity;
+    public double ethereum_quantity;
+
+    public int NFT_num = 1;
 
 
-    public bool spend(string currency, int amount)
+    public bool spend(string currency, double amount)
     {
         bool result = false;
         if (currency == null || amount <= 0)
@@ -44,7 +46,7 @@ public class Wallet : ScriptableObject
         return result;
     }
 
-    public void gain(string currency, int amount)
+    public void gain(string currency, double amount)
     {
         if (currency == null || amount <= 0)
         {
@@ -61,6 +63,16 @@ public class Wallet : ScriptableObject
             default:
                 break;
         }
+    }
+
+    public void getNFT(int amount)
+    {
+        NFT_num += amount;
+    }
+
+    public void sellNFT(int amount)
+    {
+        NFT_num -= amount;
     }
 
 }

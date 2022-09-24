@@ -4,6 +4,8 @@ using UnityEngine;
 using Photon.Pun;
 using Cinemachine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManagerSystem : MonoBehaviourPunCallbacks
 
@@ -15,7 +17,7 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
     public GameObject phoneControlCanvas;
     public GameObject tradingCanvas;
 
-    public GameObject backpackCanvas;
+    GameObject backpackCanvas;
     public Button sellingBtn;
 
     GameObject player;
@@ -39,9 +41,20 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
         {
             player = PhotonNetwork.Instantiate(femalePrefab.name, new Vector3(1f, 0.9f, 0f), Quaternion.identity);
         }
+        player.GetComponent<PlayerControl>().toggleBackpack();
+        backpackCanvas = player.transform.Find("BackpackCanvas").gameObject;
         var vcam = vcam_object.GetComponent<CinemachineFreeLook>();
         vcam.LookAt = player.transform;
         vcam.Follow = player.transform;
+    }
+
+    private void Update()
+    {
+        if (player == null)
+        {
+            Cursor.visible = true;
+            SceneManager.LoadScene("Loading");
+        }
     }
     public void toggleBackpack()
     {
@@ -57,21 +70,16 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
         Cursor.visible = false;
     }
 
-    public void startSell()
-    {
-        player.GetComponent<PlayerControl>().StartSell(sellingBtn);
-    }
-
-    public void StartTrading()
+    public void ShowTradingCanvas()
     {
         // 1. Pop up trading UI
         // 2. Display NFT info
         // 3. Buy -> wallet spend amount
         tradingCanvas.SetActive(true);
-        Cursor.visible = true;
+        showCursor();
     }
 
-    public void StopTrading()
+    public void HideTradingCanvas()
     {
         // Hide trading UI
         tradingCanvas.SetActive(false);
@@ -80,10 +88,12 @@ public class GameManagerSystem : MonoBehaviourPunCallbacks
 
     public void placeOrder()
     {
-        bool result = backpackCanvas.GetComponent<WalletDisplay>().wallet.spend("Bitcoin", 2);
+        bool result = backpackCanvas.GetComponent<WalletDisplay>().wallet.spend("Bitcoin", 0.18);
+
 
         if (result)
         {
+            backpackCanvas.GetComponent<WalletDisplay>().wallet.getNFT(1);
             tradingCanvas.GetComponent<TradingDisplay>().nft.AddOffers(PhotonNetwork.NickName);
             tradingCanvas.GetComponent<TradingDisplay>().updateOffer();
             backpackCanvas.GetComponent<WalletDisplay>().updateWallet();
