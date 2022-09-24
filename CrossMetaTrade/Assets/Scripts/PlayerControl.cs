@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Photon.Pun;
+using UnityEngine.VFX;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -14,6 +15,7 @@ public class PlayerControl : MonoBehaviour
     float turnSmoothVelocity;
     public bool isBackpackOpen = false;
     public bool isSelling = false;
+    public VisualEffect levelup;
     Vector3 velocity;
 
     // sign components
@@ -206,5 +208,10 @@ public class PlayerControl : MonoBehaviour
     {
         subscribeCanvas.SetActive(visibility);
         Cursor.visible = cursor;
+    }
+
+    public void Levelup()
+    {
+        levelup.Play();
     }
 }
